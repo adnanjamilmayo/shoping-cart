@@ -1,17 +1,21 @@
-import { useState } from 'react'
-import './App.css'
-import Navbar from './components/Navbar'
-import ProductCard from './components/ProductCard'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import ProductCard from "./components/ProductCard";
+import CardPages from "./components/CardPages";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Navbar />
-      <ProductCard />
-    </>
-  )
+    <BrowserRouter>
+      <div>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<ProductCard />} />
+          <Route path="/cart" element={<CardPages />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
